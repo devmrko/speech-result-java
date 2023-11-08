@@ -36,12 +36,10 @@ public class SpeechResultFunction {
 			Properties properties;
 			properties = PropertiesLoaderUtils.loadProperties(resource);
 
-//			String configurationFilePath = properties.getProperty("configurationFilePath");
-//			String profile = properties.getProperty("profile");
-			String namespaceName = properties.getProperty("namespaceName");
-			String compartmentId = properties.getProperty("compartmentId");
-			String urlStr = properties.getProperty("speech.post.api.url");
-			String outBucketName = properties.getProperty("outBucketName");
+			String namespaceName = System.getenv("namespaceName") == null ? properties.getProperty("namespaceName") : System.getenv("namespaceName");
+			String compartmentId = System.getenv("compartmentId") == null ? properties.getProperty("compartmentId") : System.getenv("compartmentId");
+			String urlStr = System.getenv("speech.post.api.url") == null ? properties.getProperty("speech.post.api.url") : System.getenv("speech.post.api.url");
+			String outBucketName = System.getenv("outBucketName") == null ? properties.getProperty("outBucketName") : System.getenv("outBucketName");
 			
 			try {
 				
